@@ -1,0 +1,9 @@
+build/
+*.o
+*.a
+*.so
+*.d
+*.ptx
+*.cubin
+.cache/
+compile_commands.json

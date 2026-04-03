@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.18)
+project(CuSAR LANGUAGES CXX CUDA)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_STANDARD 17)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_ARCHITECTURES native)
+add_subdirectory(external/six-library)
+add_subdirectory(src)
+

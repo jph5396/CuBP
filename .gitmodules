@@ -1,0 +1,3 @@
+[submodule "external/six-library"]
+	path = external/six-library
+	url = https://github.com/ngageoint/six-library
