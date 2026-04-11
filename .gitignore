@@ -7,3 +7,5 @@ build/
 *.cubin
 .cache/
 compile_commands.json
+
+*.cphd
