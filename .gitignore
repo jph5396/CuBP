@@ -1,7 +1,12 @@
 build/
+dist/
+*.egg-info/
+__pycache__/
 *.o
 *.a
 *.so
+*.pyd
+*.pyc
 *.d
 *.ptx
 *.cubin
