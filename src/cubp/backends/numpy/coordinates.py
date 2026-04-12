@@ -1,21 +1,16 @@
 """
-Numpy/sarpy based coordinate conversions. 
+Numpy/sarpy based coordinate conversions.
 """
+
 import numpy as np
 from sarpy.geometry.geocoords import (
-    enu_to_ecf, 
+    ecf_to_enu,
+    enu_to_ecf,
     geodetic_to_ecf,
-    ecf_to_enu,  
 )
 
-def build_enu_image_grid(
-        x_size: int, 
-        y_size: int, 
-        spacing: float, 
-        reference_point: np.ndarray, 
-        target = None
-    ):
 
+def build_enu_image_grid(x_size: int, y_size: int, spacing: float, reference_point: np.ndarray, target=None):
     """
     Build an ENU image grid.
 
@@ -23,16 +18,16 @@ def build_enu_image_grid(
     ----------
     x_size : int
         Number of pixels in the x direction.
-    
+
     y_size : int
         Number of pixels in the y direction.
-    
-    reference_point: array 
+
+    reference_point: array
         reference point in ECF format
 
-    target_point: array 
+    target_point: array
         target point to center the grid on.
-    
+
     spacing : float
         Spacing between pixels.
 
@@ -42,14 +37,13 @@ def build_enu_image_grid(
         A 3D array of shape (x_size, y_size, 3) where each pixel contains [East, North, Up] coordinates in meters.
     """
 
-    center_x = 0 
-    center_y = 0 
+    center_x = 0
+    center_y = 0
 
-    if target is not None: 
+    if target is not None:
         targ_enu = ecf_to_enu(geodetic_to_ecf(target), reference_point)
         center_x = targ_enu[0]
         center_y = targ_enu[1]
-
 
     x_width_m = x_size * spacing
     y_height_m = y_size * spacing
@@ -63,27 +57,27 @@ def build_enu_image_grid(
     enu_grid = np.column_stack((east_grid, north_grid, up_grid))
     return enu_grid
 
- 
+
 def convert_enu_grid_to_ecef(enu_grid, origin_ecef):
     """
     Convert an ENU grid to ECEF coordinates.
-    
+
     Parameters
     ----------
     enu_grid : np.ndarray
         Array of shape (N, 3) containing [East, North, Up] coordinates
     origin_ecef : list or np.ndarray
         Origin point in ecef format
-    
+
     Returns
     -------
     np.ndarray
         Array of shape (N, 3) containing ECEF coordinates
     """
     ecef_grid = np.zeros_like(enu_grid)
-    
+
     for i in range(len(enu_grid)):
         enu_point = enu_grid[i]
         ecef_grid[i] = enu_to_ecf(enu_point, origin_ecef)
-    
+
     return ecef_grid
