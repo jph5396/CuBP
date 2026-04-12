@@ -1,0 +1,9 @@
+cphd_file: "wash-dc.cphd"
+image_bounds: 
+  x: 1024
+  y: 1024 
+target_lon_lat: 
+  lon: -77.0434293919203
+  lat: 38.90963968131613
+output_file: "sar_dupont.png"
+backend: 'numpy'
