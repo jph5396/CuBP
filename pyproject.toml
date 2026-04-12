@@ -20,7 +20,11 @@ minimum-version = "build-system.requires"
 build-dir = "build/{wheel_tag}"
 
 [tool.uv]
-cache-keys = [{ file = "pyproject.toml" }, { file = "src/libcubp/**/*.{h,c,hpp,cpp,cu,cuh}" }, { file = "CMakeLists.txt" }]
+cache-keys = [
+    { file = "pyproject.toml" }, 
+    { file = "src/libcubp/**/*.{h,c,hpp,cpp,cu,cuh}" }, 
+    { file = "CMakeLists.txt" }
+]
 
 [build-system]
 requires = ["scikit-build-core>=0.12", "pybind11>=3", "numpy>=2.0"]
@@ -29,4 +33,5 @@ build-backend = "scikit_build_core.build"
 [dependency-groups]
 dev = [
     "pybind11>=3.0.3",
+    "pybind11-stubgen>=2.5.5",
 ]

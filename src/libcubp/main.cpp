@@ -1,6 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 #include "kernels.h"
+#include <iostream> 
 
 namespace py = pybind11;
 
@@ -20,10 +21,19 @@ py::array_t<float> scale(py::array_t<float, py::array::c_style | py::array::forc
     return result;
 }
 
-PYBIND11_MODULE(_core, m) {
-    m.doc() = "CuBP: CUDA kernels exposed via pybind11";
+void test(py::array_t<float, py::array::c_style | py::array::forcecast> arr) {
+    std::cout << "received!\n";
+}
+
+PYBIND11_MODULE(_libcubp, m) {
+    m.doc() = "CuBP: cuda backprojection library";
 
     m.def("scale", &scale,
           "Element-wise multiply a float32 numpy array by a scalar on the GPU",
           py::arg("arr"), py::arg("scalar"));
+
+    m.def("test", &test,
+        "testing func", 
+        py::arg("arr")
+    );
 }

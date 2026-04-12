@@ -9,16 +9,19 @@ find_package(CUDAToolkit REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 find_package(Python COMPONENTS NumPy REQUIRED)
 
-pybind11_add_module(_core MODULE
-    src/libcubp/main.cpp
-    src/libcubp/kernels.cu
+file(GLOB_RECURSE OP_SOURCES CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/libcubp/*"
 )
 
-target_include_directories(_core PRIVATE
+pybind11_add_module(_libcubp MODULE
+   ${OP_SOURCES}
+)
+
+target_include_directories(_libcubp PRIVATE
     ${Python_NumPy_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/libcubp
 )
 
-target_link_libraries(_core PRIVATE CUDA::cudart)
+target_link_libraries(_libcubp PRIVATE CUDA::cudart)
 
-install(TARGETS _core DESTINATION ${SKBUILD_PROJECT_NAME})
+install(TARGETS _libcubp DESTINATION ${SKBUILD_PROJECT_NAME})
