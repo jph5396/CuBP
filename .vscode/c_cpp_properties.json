@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "linux",
+            "includePath": [
+                "${workspaceFolder}/.venv/lib/python3.13/site-packages/pybind11/include",
+                
+                "${workspaceFolder}/.venv/lib/python3.13/site-packages/numpy/_core/include",
+                "${workspaceFolder}/src/libcubp",
+                "/usr/local/cuda/include"
+            ],
+            "intelliSenseMode": "linux-gcc-arm64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17"
+        }
+    ],
+    "version": 4
+}
