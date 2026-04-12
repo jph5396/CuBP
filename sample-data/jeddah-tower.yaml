@@ -1,0 +1,7 @@
+cphd_file: "jeddah-tower.cphd"
+image_bounds: 
+  x: 512
+  y: 512 
+output_file: "jeddah-tower.png"
+backend: 'numpy'
+pulse_limit: 200

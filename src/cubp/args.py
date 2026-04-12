@@ -1,4 +1,5 @@
 import os
+from enum import StrEnum
 from pathlib import Path
 
 from pydantic import BaseModel, Field
@@ -10,7 +11,11 @@ from pydantic_settings import (
     YamlConfigSettingsSource,
 )
 
-from cubp.backends import Backend
+
+class Backend(StrEnum):
+    numpy = "numpy"
+    cupy = "cupy"
+    cuda = "cuda"
 
 
 class ImageBounds(BaseModel):
@@ -32,6 +37,8 @@ class CuBPArguments(BaseSettings):
     output_file: Path = Field(default=Path("out.png"), description="path to output a formed image to.")
     target: Target | None = Field(default=None, description=" geodetic location of target")
     backend: Backend = Field(default=Backend.numpy, description="Backend implementation to use.")
+    log_file: str | None = Field(default=None, description="optional file to write logs to.")
+    log_level: str = Field(default="DEBUG", description="log level to be used.")
 
     model_config = SettingsConfigDict(cli_parse_args=True, yaml_file=os.getenv("CuBP_CONFIG"))
 

@@ -1,10 +1,7 @@
-from enum import StrEnum
+from typing import Type
 
+from cubp.args import Backend
+from cubp.backends.base import BaseBackend
+from cubp.backends.numpy.impl import NumpyBackend
 
-class Backend(StrEnum):
-    numpy = "numpy"
-    cupy = "cupy"
-    cuda = "cuda"
-
-
-BACKENDS = {}
+BACKENDS: dict[Backend, Type[BaseBackend]] = {Backend.numpy: NumpyBackend}
