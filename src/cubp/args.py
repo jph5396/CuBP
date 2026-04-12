@@ -25,7 +25,7 @@ class Target(BaseModel):
 
 
 class CuBPArguments(BaseSettings):
-    cphd_file: str = Field(description="Path to CPHD file to run bp on.")
+    cphd_file: Path = Field(description="Path to CPHD file to run bp on.")
     image_bounds: ImageBounds = Field(default=ImageBounds(), description="Image bounds for produced image.")
     pulse_limit: int = Field(default=-1, description="number of pulses to use during image formation.")
     image_spacing: float = Field(default=0.5, description="spacing between pixels in meters.")
