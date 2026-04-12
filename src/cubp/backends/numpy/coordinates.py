@@ -1,5 +1,5 @@
 """
-Module storing utilities for converting between coordinate systems. 
+Numpy/sarpy based coordinate conversions. 
 """
 import numpy as np
 from sarpy.geometry.geocoords import (
@@ -15,7 +15,7 @@ def build_enu_image_grid(
         reference_point: np.ndarray, 
         target = None
     ):
-    
+
     """
     Build an ENU image grid.
 
@@ -49,7 +49,6 @@ def build_enu_image_grid(
         targ_enu = ecf_to_enu(geodetic_to_ecf(target), reference_point)
         center_x = targ_enu[0]
         center_y = targ_enu[1]
-        print(f'centering enu grid on {targ_enu}')
 
 
     x_width_m = x_size * spacing

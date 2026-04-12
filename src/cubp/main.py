@@ -1,10 +1,10 @@
 from cubp.args import (
     CuBPArguments, 
     ImageBounds, 
-    TargetLonLat
+    Target
 )
 
-from cubp.coordinates import build_enu_image_grid, convert_enu_grid_to_ecef
+from cubp.backends.numpy.coordinates import build_enu_image_grid, convert_enu_grid_to_ecef
 
 import numpy as np
 from sarpy.io.phase_history.cphd import CPHDTypeReader
@@ -15,7 +15,7 @@ def _prepare_coordinate_grid(
         reader: CPHDTypeReader,
         image_bounds: ImageBounds,
         spacing: float,
-        target: TargetLonLat | None = None, 
+        target: Target | None = None, 
         
                 
 ) -> np.ndarray:
@@ -31,7 +31,7 @@ def _prepare_coordinate_grid(
 
     t = None
     if target is not None: 
-        t = (target.lat, target.lon) 
+        t = (target.lat, target.lon, target.alt) 
 
 
     enu_grid = build_enu_image_grid(
@@ -59,7 +59,7 @@ def main() -> None:
         reader, 
         args.image_bounds, 
         args.image_spacing,
-        args.target_lon_lat, 
+        args.target, 
     )
 
 
