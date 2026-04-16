@@ -58,12 +58,9 @@ class NumpyBackend(BaseBackend):
         range_axis = np.linspace(-range_bin_len / 2, range_bin_len / 2, range_bin_len) * range_res
         k_c = 4 * np.pi * self._fc / c
 
-        all_pulses = self.reader[0 : self.pulse_limit, :]
-
-        for pulse_num in range(0, self.pulse_limit):
+        for pulse_num in range(1, self.pulse_limit):
             # step 1, get pulse and perform fft.
-
-            pulse_t = sar_fft(all_pulses[pulse_num])
+            pulse_t = sar_fft(self.reader[pulse_num - 1 : pulse_num, :])
 
             r_center = np.linalg.norm(self._src_pos[pulse_num] - self._srp_ecf)
             r_pixels = np.linalg.norm(self.ecef_grid - self._src_pos[pulse_num], axis=1)

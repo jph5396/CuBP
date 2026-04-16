@@ -39,6 +39,12 @@ class CuBPArguments(BaseSettings):
     backend: Backend = Field(default=Backend.numpy, description="Backend implementation to use.")
     log_file: str | None = Field(default=None, description="optional file to write logs to.")
     log_level: str = Field(default="DEBUG", description="log level to be used.")
+    concurrency_limit: int = Field(
+        default=1,
+        description="""
+    Concurrency limit for a given run. This will also increase the amount of memory used.
+    """,
+    )
 
     model_config = SettingsConfigDict(cli_parse_args=True, yaml_file=os.getenv("CuBP_CONFIG"))
 
