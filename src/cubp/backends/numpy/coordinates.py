@@ -74,10 +74,5 @@ def convert_enu_grid_to_ecef(enu_grid, origin_ecef):
     np.ndarray
         Array of shape (N, 3) containing ECEF coordinates
     """
-    ecef_grid = np.zeros_like(enu_grid)
-
-    for i in range(len(enu_grid)):
-        enu_point = enu_grid[i]
-        ecef_grid[i] = enu_to_ecf(enu_point, origin_ecef)
-
+    ecef_grid = enu_to_ecf(enu_grid, origin_ecef)
     return ecef_grid
