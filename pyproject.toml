@@ -38,9 +38,11 @@ build-backend = "scikit_build_core.build"
 
 [dependency-groups]
 dev = [
+    "ipython>=9.13.0",
     "pre-commit>=4.5.1",
     "pybind11>=3.0.3",
     "pybind11-stubgen>=2.5.5",
+    "pytest>=9.0.3",
 ]
 
 [tool.ruff]

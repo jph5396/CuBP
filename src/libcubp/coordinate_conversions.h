@@ -47,10 +47,10 @@ struct ENUMatrixTerms {
     double clo;     // cos(lon)
     double sla;     // sin(lat)
     double cla;     // cos(lat)
-    double sla_clo; //sin(lat)*cos(lon)
-    double sla_slo; //sin(lat)*sin(lon)
-    double cla_clo; //cos(lat)*cos(lon)
-    double cla_slo; //cos(lat)*sin(lon)
+    double sla_clo; // sin(lat)*cos(lon)
+    double sla_slo; // sin(lat)*sin(lon)
+    double cla_clo; // cos(lat)*cos(lon)
+    double cla_slo; // cos(lat)*sin(lon)
 
     ENUMatrixTerms(double lat_rad, double lon_rad) {
         sla = std::sin(lat_rad); 

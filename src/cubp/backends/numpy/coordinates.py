@@ -45,10 +45,10 @@ def build_enu_image_grid(x_size: int, y_size: int, spacing: float, reference_poi
         center_x = targ_enu[0]
         center_y = targ_enu[1]
 
-    x_width_m = x_size * spacing
-    y_height_m = y_size * spacing
-    x_axis = np.linspace((-x_width_m / 2) + center_x, (x_width_m / 2) + center_x, x_size)
-    y_axis = np.linspace((-y_height_m / 2) + center_y, (y_height_m / 2) + center_y, y_size)
+    x_half_m = ((x_size - 1) * spacing) / 2
+    y_half_m = ((y_size - 1) * spacing) / 2
+    x_axis = np.linspace(-x_half_m + center_x, x_half_m + center_x, x_size)
+    y_axis = np.linspace(-y_half_m + center_y, y_half_m + center_y, y_size)
     east_grid, north_grid = np.meshgrid(x_axis, y_axis)
     east_grid = east_grid.flatten()
     north_grid = north_grid.flatten()
