@@ -1,7 +1,13 @@
 #pragma once
 #include <cmath>
-// constants that are needed for implemented coordinate conversions.
+#include <optional>
 
+
+const double deg_to_rad_multipler = M_PI / 180.0;
+
+// Anything related to WGS 1984 and coordinate system conversions around it
+// should be placed in this namespace. 
+// 
 // See section 3 in the standards document linked here: 
 // https://nsgreg.nga.mil/doc/view?i=4597
 namespace WGS84 {
@@ -34,7 +40,13 @@ namespace WGS84 {
     //ENU 
     struct ENUCoord {
         double e, n, u; 
-    }; 
+    };
+
+    // Takes in a geodetic coordinate and converts it to an ECEF coordinate
+    ECEFCoord geodeticToEcef(GeodeticCoord coord);
+
+    // Takes in a ECEF coordinate and converts it to a geodetic coordinate
+    GeodeticCoord ecefToGeodetic(ECEFCoord coord);
 }
 
 /*
@@ -63,4 +75,43 @@ struct ENUMatrixTerms {
         cla_clo = cla * clo; 
         cla_slo = cla * slo; 
     };
+};
+
+/*
+    ENUSpacing contains the offset per pixel in meters for 
+    request in each direction.
+*/
+struct ENUSpacing {
+    double d_e;
+    double d_n; 
+    double d_u; 
+};
+
+class CoordinateGridManager {
+public: 
+    CoordinateGridManager(
+        int xSize, 
+        int ySize, 
+        double spacing, 
+        WGS84::ECEFCoord referncePoint, 
+        std::optional<WGS84::GeodeticCoord> targetPoint = std::nullopt
+    );
+    ~CoordinateGridManager();
+
+    void createGrid(double* grid, size_t len);
+
+private: 
+    ENUMatrixTerms terms_;
+    int xSize_; 
+    int ySize_; 
+    int spacing_;
+    WGS84::ECEFCoord referencePoint_;
+    WGS84::ENUCoord targetEnu_; 
+
+    static ENUMatrixTerms computeEnuTerms(WGS84::ECEFCoord coord);
+    static WGS84::ENUCoord optionallyResolveTargetCoordinates(
+        WGS84::ECEFCoord referencePoint,
+        const ENUMatrixTerms& matTerms, 
+        std::optional<WGS84::GeodeticCoord> targetPoint
+    );
 };

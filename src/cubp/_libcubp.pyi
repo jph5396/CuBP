@@ -6,19 +6,74 @@ from __future__ import annotations
 
 import typing
 
-import numpy
-import numpy.typing
+__all__: list[str] = ["ECEFCoord", "ENUCoord", "GeodeticCoord", "ecef_to_geodetic", "geodetic_to_ecef"]
 
-__all__: list[str] = ["scale", "test"]
+class ECEFCoord:
+    def __init__(
+        self,
+        arg0: typing.SupportsFloat | typing.SupportsIndex,
+        arg1: typing.SupportsFloat | typing.SupportsIndex,
+        arg2: typing.SupportsFloat | typing.SupportsIndex,
+    ) -> None: ...
+    @property
+    def x(self) -> float: ...
+    @x.setter
+    def x(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+    @property
+    def y(self) -> float: ...
+    @y.setter
+    def y(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+    @property
+    def z(self) -> float: ...
+    @z.setter
+    def z(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
 
-def scale(
-    arr: typing.Annotated[numpy.typing.ArrayLike, numpy.float32], scalar: typing.SupportsFloat | typing.SupportsIndex
-) -> numpy.typing.NDArray[numpy.float32]:
+class ENUCoord:
+    def __init__(
+        self,
+        arg0: typing.SupportsFloat | typing.SupportsIndex,
+        arg1: typing.SupportsFloat | typing.SupportsIndex,
+        arg2: typing.SupportsFloat | typing.SupportsIndex,
+    ) -> None: ...
+    @property
+    def e(self) -> float: ...
+    @e.setter
+    def e(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+    @property
+    def n(self) -> float: ...
+    @n.setter
+    def n(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+    @property
+    def u(self) -> float: ...
+    @u.setter
+    def u(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+
+class GeodeticCoord:
+    def __init__(
+        self,
+        arg0: typing.SupportsFloat | typing.SupportsIndex,
+        arg1: typing.SupportsFloat | typing.SupportsIndex,
+        arg2: typing.SupportsFloat | typing.SupportsIndex,
+    ) -> None: ...
+    @property
+    def alt(self) -> float: ...
+    @alt.setter
+    def alt(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+    @property
+    def lat(self) -> float: ...
+    @lat.setter
+    def lat(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+    @property
+    def lon(self) -> float: ...
+    @lon.setter
+    def lon(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+
+def ecef_to_geodetic(arg0: ECEFCoord) -> GeodeticCoord:
     """
-    Element-wise multiply a float32 numpy array by a scalar on the GPU
+    converts an ECEF coordinate to a geodetic coordinate
     """
 
-def test(arr: typing.Annotated[numpy.typing.ArrayLike, numpy.float32]) -> None:
+def geodetic_to_ecef(arg0: GeodeticCoord) -> ECEFCoord:
     """
-    testing func
+    converts a geodetic coordinate to a ECEF coordinate
     """
