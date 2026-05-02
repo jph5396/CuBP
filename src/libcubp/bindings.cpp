@@ -35,6 +35,17 @@ PYBIND11_MODULE(_libcubp, m) {
         .def_readwrite("y", &WGS84::ECEFCoord::y)
         .def_readwrite("z", &WGS84::ECEFCoord::z);
 
+    py::class_<ENUMatrixTerms>(m, "ENUMatrixTerms")
+        .def(py::init<double, double>(), py::arg("lat_rad"), py::arg("lon_rad"))
+        .def_readonly("slo", &ENUMatrixTerms::slo)
+        .def_readonly("clo", &ENUMatrixTerms::clo)
+        .def_readonly("sla", &ENUMatrixTerms::sla)
+        .def_readonly("cla", &ENUMatrixTerms::cla)
+        .def_readonly("sla_clo", &ENUMatrixTerms::sla_clo)
+        .def_readonly("sla_slo", &ENUMatrixTerms::sla_slo)
+        .def_readonly("cla_clo", &ENUMatrixTerms::cla_clo)
+        .def_readonly("cla_slo", &ENUMatrixTerms::cla_slo);
+
     py::class_<WGS84::ENUCoord>(m, "ENUCoord")
         .def(py::init<double, double, double>())
         .def_readwrite("e", &WGS84::ENUCoord::e)
@@ -53,4 +64,10 @@ PYBIND11_MODULE(_libcubp, m) {
         &WGS84::geodeticToEcef, 
         "converts a geodetic coordinate to a ECEF coordinate"
     );
+
+    m.def(
+        "ecef_to_enu", 
+        &WGS84::ecefToEnu,
+        "Converts an ecef coordinate to its enu coordinate"
+    ); 
 }

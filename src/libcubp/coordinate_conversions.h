@@ -5,6 +5,29 @@
 
 const double deg_to_rad_multipler = M_PI / 180.0;
 
+struct ENUMatrixTerms {
+    double slo;     // sin(lon)
+    double clo;     // cos(lon)
+    double sla;     // sin(lat)
+    double cla;     // cos(lat)
+    double sla_clo; // sin(lat)*cos(lon)
+    double sla_slo; // sin(lat)*sin(lon)
+    double cla_clo; // cos(lat)*cos(lon)
+    double cla_slo; // cos(lat)*sin(lon)
+
+    ENUMatrixTerms(double lat_rad, double lon_rad) {
+        sla = std::sin(lat_rad); 
+        cla = std::cos(lat_rad); 
+        slo = std::sin(lon_rad); 
+        clo = std::cos(lon_rad); 
+
+        sla_clo = sla * clo; 
+        sla_slo = sla * slo;
+        cla_clo = cla * clo; 
+        cla_slo = cla * slo; 
+    };
+};
+
 // Anything related to WGS 1984 and coordinate system conversions around it
 // should be placed in this namespace. 
 // 
@@ -47,6 +70,10 @@ namespace WGS84 {
 
     // Takes in a ECEF coordinate and converts it to a geodetic coordinate
     GeodeticCoord ecefToGeodetic(ECEFCoord coord);
+
+    // this assumes a version of the enu conversion that has a precalculated 
+    // ENU Matrix. 
+    ENUCoord ecefToEnu(ECEFCoord coord, const ENUMatrixTerms& matTerms, ECEFCoord referenceCoord);
 }
 
 /*
@@ -54,28 +81,7 @@ namespace WGS84 {
     reusable for conversions to and from, they would just need to be transposed. 
 */ 
 
-struct ENUMatrixTerms {
-    double slo;     // sin(lon)
-    double clo;     // cos(lon)
-    double sla;     // sin(lat)
-    double cla;     // cos(lat)
-    double sla_clo; // sin(lat)*cos(lon)
-    double sla_slo; // sin(lat)*sin(lon)
-    double cla_clo; // cos(lat)*cos(lon)
-    double cla_slo; // cos(lat)*sin(lon)
 
-    ENUMatrixTerms(double lat_rad, double lon_rad) {
-        sla = std::sin(lat_rad); 
-        cla = std::cos(lat_rad); 
-        slo = std::sin(lon_rad); 
-        clo = std::cos(lon_rad); 
-
-        sla_clo = sla * clo; 
-        sla_slo = sla * slo;
-        cla_clo = cla * clo; 
-        cla_slo = cla * slo; 
-    };
-};
 
 /*
     ENUSpacing contains the offset per pixel in meters for 

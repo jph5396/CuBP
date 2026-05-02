@@ -44,8 +44,23 @@ WGS84::ECEFCoord WGS84::geodeticToEcef(WGS84::GeodeticCoord coord) {
         (r + coord.alt) * cla_slo,
         (r + coord.alt - WGS84::E2*r)*sla
     };
-
 }
+
+WGS84::ENUCoord WGS84::ecefToEnu(
+    WGS84::ECEFCoord coord,
+    const ENUMatrixTerms& matTerms,
+    WGS84::ECEFCoord referenceCoord
+) {
+    double d_x = coord.x - referenceCoord.x;
+    double d_y = coord.y - referenceCoord.y; 
+    double d_z = coord.z - referenceCoord.z; 
+
+    return WGS84::ENUCoord {
+        - matTerms.slo * d_x + matTerms.clo * d_y, 
+        - matTerms.sla_clo * d_x - matTerms.sla_slo * d_y + matTerms.cla * d_z, 
+        matTerms.cla_clo * d_x + matTerms.cla_slo * d_y + matTerms.sla * d_z
+    };
+};
 
 
 ENUMatrixTerms CoordinateGridManager::computeEnuTerms(
@@ -71,7 +86,8 @@ WGS84::ENUCoord CoordinateGridManager::optionallyResolveTargetCoordinates(
     std::optional<WGS84::GeodeticCoord> targetPoint
 ) {
     if (targetPoint.has_value()) {
-
+        WGS84::ECEFCoord targEcef = WGS84::geodeticToEcef(targetPoint.value());
+        return WGS84::ecefToEnu(targEcef, matTerms, referencePoint);
     }
     return WGS84::ENUCoord{ 0.0, 0.0, 0.0 };
 };
@@ -88,6 +104,12 @@ CoordinateGridManager::CoordinateGridManager(
     spacing_(spacing),
     referencePoint_(referencePoint),
     terms_(computeEnuTerms(referencePoint)),
-    targetEnu_()
+    targetEnu_(
+        optionallyResolveTargetCoordinates(
+            referencePoint, 
+            terms_, 
+            targetPoint
+        )
+    )
 
 {};

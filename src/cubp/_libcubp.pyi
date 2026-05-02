@@ -6,7 +6,15 @@ from __future__ import annotations
 
 import typing
 
-__all__: list[str] = ["ECEFCoord", "ENUCoord", "GeodeticCoord", "ecef_to_geodetic", "geodetic_to_ecef"]
+__all__: list[str] = [
+    "ECEFCoord",
+    "ENUCoord",
+    "ENUMatrixTerms",
+    "GeodeticCoord",
+    "ecef_to_enu",
+    "ecef_to_geodetic",
+    "geodetic_to_ecef",
+]
 
 class ECEFCoord:
     def __init__(
@@ -48,6 +56,27 @@ class ENUCoord:
     @u.setter
     def u(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
 
+class ENUMatrixTerms:
+    def __init__(
+        self, lat_rad: typing.SupportsFloat | typing.SupportsIndex, lon_rad: typing.SupportsFloat | typing.SupportsIndex
+    ) -> None: ...
+    @property
+    def cla(self) -> float: ...
+    @property
+    def cla_clo(self) -> float: ...
+    @property
+    def cla_slo(self) -> float: ...
+    @property
+    def clo(self) -> float: ...
+    @property
+    def sla(self) -> float: ...
+    @property
+    def sla_clo(self) -> float: ...
+    @property
+    def sla_slo(self) -> float: ...
+    @property
+    def slo(self) -> float: ...
+
 class GeodeticCoord:
     def __init__(
         self,
@@ -67,6 +96,11 @@ class GeodeticCoord:
     def lon(self) -> float: ...
     @lon.setter
     def lon(self, arg0: typing.SupportsFloat | typing.SupportsIndex) -> None: ...
+
+def ecef_to_enu(arg0: ECEFCoord, arg1: ENUMatrixTerms, arg2: ECEFCoord) -> ENUCoord:
+    """
+    Converts an ecef coordinate to its enu coordinate
+    """
 
 def ecef_to_geodetic(arg0: ECEFCoord) -> GeodeticCoord:
     """
