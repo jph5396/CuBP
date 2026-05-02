@@ -10,7 +10,7 @@
 */
 WGS84::GeodeticCoord WGS84::ecefToGeodetic(WGS84::ECEFCoord coord){
 
-    double x_y_euclid = std::sqrt(std::pow(coord.x, 2.0) + std::pow(coord.y, 20.0));
+    double x_y_euclid = std::sqrt(std::pow(coord.x, 2.0) + std::pow(coord.y, 2.0));
 
     double p = (std::pow(coord.x, 2.0) + std::pow(coord.y, 2.0)) / WGS84::A2;
     double q = ((1.0 - WGS84::E2) / WGS84::A2) * std::pow(coord.z, 2.0);
@@ -24,7 +24,7 @@ WGS84::GeodeticCoord WGS84::ecefToGeodetic(WGS84::ECEFCoord coord){
     double D = (k *  x_y_euclid)/ (k + WGS84::E2);
 
     double lon = 2.0 * std::atan2(coord.y, coord.x + x_y_euclid);
-    double lat = 2.0 * std::atan2(coord.z, D + std::sqrt(D * D + coord.y * coord.y));
+    double lat = 2.0 * std::atan2(coord.z, D + std::sqrt(D * D + coord.z * coord.z));
     double height = ((k + WGS84::E2 - 1.0) / k) * std::sqrt(D * D + coord.z * coord.z);
 
     return WGS84::GeodeticCoord{ lat, lon, height};

@@ -12,7 +12,7 @@ const double deg_to_rad_multipler = M_PI / 180.0;
 // https://nsgreg.nga.mil/doc/view?i=4597
 namespace WGS84 {
     // semi-major axis
-    constexpr double A = 6378127.0;
+    constexpr double A = 6378137.0;
     // semi-minor axis
     constexpr double B = 6356752.3142;
     // Flattening Factor of the Earth (1/f)
