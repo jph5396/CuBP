@@ -1,5 +1,5 @@
-#include "coordinate_kernels.cuh"
-#include "coordinate_conversions.h"
+#include "grid_kernels.cuh"
+#include "grid_manager.h"
 
 // WGS 1984 constants for coordinate transformations. 
 __constant__ double cu_A = WGS84::A; 

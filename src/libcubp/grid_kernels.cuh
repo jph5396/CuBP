@@ -1,5 +1,5 @@
 #pragma once
-#include "coordinate_conversions.h"
+#include "geodesy.h"
 
 void setCoordinateReferences(
     const ENUMatrixTerms& matTerms,

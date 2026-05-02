@@ -2,7 +2,7 @@
 #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
 #include <iostream>
-#include "coordinate_conversions.h"
+#include "grid_manager.h"
 
 namespace py = pybind11;
 
