@@ -1,6 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
-#include <iostream> 
+#include <pybind11/stl.h>
+#include <iostream>
 #include "coordinate_conversions.h"
 
 namespace py = pybind11;
@@ -66,8 +67,33 @@ PYBIND11_MODULE(_libcubp, m) {
     );
 
     m.def(
-        "ecef_to_enu", 
+        "ecef_to_enu",
         &WGS84::ecefToEnu,
         "Converts an ecef coordinate to its enu coordinate"
-    ); 
+    );
+
+    py::class_<CoordinateGridManager>(m, "CoordinateGridManager")
+        .def(
+            py::init<int, int, double, WGS84::ECEFCoord, std::optional<WGS84::GeodeticCoord>>(),
+            py::arg("x_size"),
+            py::arg("y_size"),
+            py::arg("spacing"),
+            py::arg("reference_point"),
+            py::arg("target_point") = std::nullopt
+        )
+        .def(
+            "create_grid",
+            &CoordinateGridManager::createGrid,
+            "Allocate device memory and run the GPU kernel to build the ECEF coordinate grid"
+        )
+        .def(
+            "grid_to_numpy",
+            [](CoordinateGridManager& self) {
+                auto host = self.gridToHost();
+                auto result = py::array_t<double>({self.numPoints(), 3});
+                std::copy(host.begin(), host.end(), result.mutable_data());
+                return result;
+            },
+            "Copy the device grid to a (x_size*y_size, 3) numpy array (primarily for testing)"
+        );
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <optional>
+#include <vector>
 
 
 const double deg_to_rad_multipler = M_PI / 180.0;
@@ -104,15 +105,19 @@ public:
     );
     ~CoordinateGridManager();
 
-    void createGrid(double* grid, size_t len);
+    void createGrid();
+    std::vector<double> gridToHost() const;
+    int numPoints() const { return xSize_ * ySize_; }
+    const double* deviceGrid() const { return d_grid_; }
 
-private: 
+private:
     ENUMatrixTerms terms_;
-    int xSize_; 
-    int ySize_; 
-    int spacing_;
+    int xSize_;
+    int ySize_;
+    double spacing_;
     WGS84::ECEFCoord referencePoint_;
-    WGS84::ENUCoord targetEnu_; 
+    WGS84::ENUCoord targetEnu_;
+    double* d_grid_ = nullptr;
 
     static ENUMatrixTerms computeEnuTerms(WGS84::ECEFCoord coord);
     static WGS84::ENUCoord optionallyResolveTargetCoordinates(

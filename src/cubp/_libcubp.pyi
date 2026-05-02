@@ -6,7 +6,11 @@ from __future__ import annotations
 
 import typing
 
+import numpy
+import numpy.typing
+
 __all__: list[str] = [
+    "CoordinateGridManager",
     "ECEFCoord",
     "ENUCoord",
     "ENUMatrixTerms",
@@ -15,6 +19,24 @@ __all__: list[str] = [
     "ecef_to_geodetic",
     "geodetic_to_ecef",
 ]
+
+class CoordinateGridManager:
+    def __init__(
+        self,
+        x_size: typing.SupportsInt | typing.SupportsIndex,
+        y_size: typing.SupportsInt | typing.SupportsIndex,
+        spacing: typing.SupportsFloat | typing.SupportsIndex,
+        reference_point: ECEFCoord,
+        target_point: GeodeticCoord | None = None,
+    ) -> None: ...
+    def create_grid(self) -> None:
+        """
+        Allocate device memory and run the GPU kernel to build the ECEF coordinate grid
+        """
+    def grid_to_numpy(self) -> numpy.typing.NDArray[numpy.float64]:
+        """
+        Copy the device grid to a (x_size*y_size, 3) numpy array (primarily for testing)
+        """
 
 class ECEFCoord:
     def __init__(

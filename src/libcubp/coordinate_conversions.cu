@@ -92,6 +92,35 @@ WGS84::ENUCoord CoordinateGridManager::optionallyResolveTargetCoordinates(
     return WGS84::ENUCoord{ 0.0, 0.0, 0.0 };
 };
 
+CoordinateGridManager::~CoordinateGridManager() {
+    if (d_grid_ != nullptr) {
+        cudaFree(d_grid_);
+    }
+}
+
+void CoordinateGridManager::createGrid() {
+    if (d_grid_ != nullptr) {
+        cudaFree(d_grid_);
+    }
+    cudaMalloc(&d_grid_, numPoints() * 3 * sizeof(double));
+    setCoordinateReferences(
+        terms_,
+        referencePoint_,
+        targetEnu_,
+        ENUSpacing{ spacing_, spacing_, 0.0 }
+    );
+    launchGenECEFCoordGrid(d_grid_, xSize_, ySize_);
+}
+
+std::vector<double> CoordinateGridManager::gridToHost() const {
+    size_t n = numPoints() * 3;
+    std::vector<double> host(n, 0.0);
+    if (d_grid_ != nullptr) {
+        cudaMemcpy(host.data(), d_grid_, n * sizeof(double), cudaMemcpyDeviceToHost);
+    }
+    return host;
+}
+
 CoordinateGridManager::CoordinateGridManager(
     int xSize,
     int ySize,
