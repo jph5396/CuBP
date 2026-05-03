@@ -1,7 +1,9 @@
-cphd_file: "jeddah-tower.cphd"
+cphd_file: "benchmarking/jeddah-tower.cphd"
 image_bounds: 
-  x: 512
-  y: 512 
-output_file: "jeddah-tower.png"
-backend: 'numpy'
-pulse_limit: 20000
+  x: 2048
+  y: 2048
+output_file: "sample-data/jeddah-tower.png"
+backend: 'cuda'
+pulse_limit: -1
+image_spacing: 0.25
+log_file: sample-data/example-logs.log

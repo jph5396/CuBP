@@ -1,0 +1,8 @@
+cphd_file: "benchmarking/capella_egypt.cphd"
+image_bounds: 
+  x: 2048
+  y: 2048
+output_file: "sample-data/capella-egypt.png"
+backend: 'cuda'
+image_spacing: 0.35
+log_file: sample-data/example-logs.log

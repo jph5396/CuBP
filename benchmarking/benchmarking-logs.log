@@ -1,0 +1,216 @@
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.007742855232208967}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 9.654375958722085}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.005139033775776625}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 23.848127661738545}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.0060740308836102486}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 48.95172568177804}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.014351751189678907}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 33.878662202041596}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.013947061263024807}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 84.53849382512271}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.01697732415050268}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 177.133215312846}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.027284577954560518}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 82.87002873187885}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.02733601490035653}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 211.38628511875868}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.027841498609632254}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 422.49334020121023}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.19711542502045631}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.1330436309799552}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18945340113714337}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.3356435331515968}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18597434181720018}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.6819854089990258}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18845595605671406}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.3510473412461579}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.19043522886931896}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.8435502140782773}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.1885461788624525}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 1.7189533938653767}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18882171623408794}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.7109814491122961}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.20973480213433504}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 1.732555029913783}
+{"message": "configuration", "config": null, "cphd_file": "capella_egypt.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.19131814502179623}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 3.458667029161006}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.0066157616674900055}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 12.695737019646913}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.0073281340301036835}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 27.62499366281554}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.005848255008459091}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 55.92120744334534}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.014291017781943083}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 45.38373200688511}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.015268655028194189}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 113.54799273237586}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.014802748803049326}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 226.67893204884604}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.032823929097503424}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 110.44290562067181}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.02818998508155346}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 274.61506133386865}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "numpy", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend numpy"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.028561857994645834}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 547.5604413072579}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.20655306009575725}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.18959157587960362}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.20661449898034334}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.43922733096405864}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 512, "y": 512}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.184940196108073}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.886861918028444}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18767072586342692}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.37893037497997284}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18865852477028966}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.9269073670729995}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1024, "y": 1024}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18916065525263548}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 1.844415482133627}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 1000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.18470402900129557}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 0.7381403497420251}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 2500, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.19094013702124357}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 1.8407100499607623}
+{"message": "configuration", "config": null, "cphd_file": "jeddah-tower.cphd", "image_bounds": {"x": 1536, "y": 1536}, "pulse_limit": 5000, "image_spacing": 0.5, "output_file": "out.png", "save_image": false, "target": null, "backend": "cuda", "log_file": "benchmarking-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.19125551311299205}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 3.670407442841679}
