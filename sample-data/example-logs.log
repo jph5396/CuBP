@@ -12,3 +12,10 @@
 {"message": "forming image"}
 {"message": "", "image_formation_time": 400.643673397135}
 {"message": "saved file to sample-data/capella-egypt.png", "total_time": 400.9952489491552}
+{"message": "configuration", "config": "sample-data/jeddah-tower.yaml", "cphd_file": "benchmarking/jeddah-tower.cphd", "image_bounds": {"x": 2048, "y": 2048}, "pulse_limit": 1000, "image_spacing": 0.25, "output_file": "jeddah_1000.png", "save_image": true, "target": null, "backend": "cuda", "log_file": "sample-data/example-logs.log", "log_level": "DEBUG", "concurrency_limit": 1}
+{"message": "loaded backend cuda"}
+{"message": "generating grid"}
+{"message": "", "grid_gen_time": 0.20066791120916605}
+{"message": "forming image"}
+{"message": "", "image_formation_time": 1.2286575851030648}
+{"message": "saved file to jeddah_1000.png", "total_time": 1.7036164901219308}
