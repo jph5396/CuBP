@@ -61,9 +61,10 @@ def main() -> None:
     complete_formation = time.perf_counter()
     logger.debug({"image_formation_time": complete_formation - start_formation})
 
-    post_process(image_mat, args.output_file)
-    image_saved_t = time.perf_counter()
-    logger.debug({"message": f"saved file to {str(args.output_file)}", "total_time": image_saved_t - start})
+    if args.save_image:
+        post_process(image_mat, args.output_file)
+        image_saved_t = time.perf_counter()
+        logger.debug({"message": f"saved file to {str(args.output_file)}", "total_time": image_saved_t - start})
 
 
 if __name__ == "__main__":
