@@ -4,6 +4,10 @@ from sarpy.io.phase_history.base import CPHDTypeReader
 from cubp.args import ImageBounds, Target
 
 
+def _nan_guard(arr: np.ndarray, message: str):
+    assert not np.any(np.isnan(arr)), message
+
+
 class BaseBackend:
     """
     BaseBackend base class for implementing different backends for
@@ -56,6 +60,18 @@ class BaseBackend:
             index=0,
             the_range=(0, self.pulse_limit),  # pyright: ignore[reportArgumentType]
         )
+
+        _nan_guard(
+            transmitter,  # pyright: ignore[reportArgumentType]
+            "Error: TxPos contains NaNs. Cannot calculate sensor position",
+        )
+
+        _nan_guard(
+            receiver,  # pyright: ignore[reportArgumentType]
+            "Error: RcvPos contains NaNs. Cannot calculate sensor position",
+        )
+
+        _nan_guard(self._srp_ecf, "ECEF reference point could not be set appropriately")
 
         self._src_pos = (transmitter + receiver) / 2  # pyright: ignore[reportOptionalOperand]
 

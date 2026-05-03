@@ -45,6 +45,7 @@ class CuBPArguments(BaseSettings):
     pulse_limit: int = Field(default=-1, description="number of pulses to use during image formation.")
     image_spacing: float = Field(default=0.5, description="spacing between pixels in meters.")
     output_file: Path = Field(default=Path("out.png"), description="path to output a formed image to.")
+    save_image: bool = Field(default=True, description="whether to save the formed image to disk.")
     target: Target | None = Field(default=None, description="geodetic location of target")
     backend: Backend = Field(default=Backend.numpy, description="Backend implementation to use.")
     log_file: str | None = Field(default=None, description="optional file to write logs to.")
@@ -56,6 +57,7 @@ class CuBPArguments(BaseSettings):
 
     model_config = SettingsConfigDict(
         cli_parse_args=True,
+        cli_implicit_flags=True,
         env_prefix="CUBP_",
         env_nested_delimiter="__",
     )
