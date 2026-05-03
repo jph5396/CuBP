@@ -75,4 +75,4 @@ sample-data directory. Below is an example of the produced image:
 
 ![jeddah-example](sample-data/jeddah-tower.png)
 
-This sample took about 4 minutes and 20 seconds to generate using the numpy backend. 
+This sample took about ~100 seconds to generate using the cuda backend backend and all available pulses. 
