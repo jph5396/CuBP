@@ -10,6 +10,7 @@ import numpy
 import numpy.typing
 
 __all__: list[str] = [
+    "BPManager",
     "CoordinateGridManager",
     "ECEFCoord",
     "ENUCoord",
@@ -19,6 +20,36 @@ __all__: list[str] = [
     "ecef_to_geodetic",
     "geodetic_to_ecef",
 ]
+
+class BPManager:
+    def __init__(
+        self,
+        x_size: typing.SupportsInt | typing.SupportsIndex,
+        y_size: typing.SupportsInt | typing.SupportsIndex,
+        pulse_limit: typing.SupportsInt | typing.SupportsIndex,
+        range_bin_len: typing.SupportsInt | typing.SupportsIndex,
+        bandwidth: typing.SupportsFloat | typing.SupportsIndex,
+        fc: typing.SupportsFloat | typing.SupportsIndex,
+        srp_ecef: ECEFCoord,
+        grid_manager: CoordinateGridManager,
+        src_pos: typing.Annotated[numpy.typing.ArrayLike, numpy.float64],
+    ) -> None: ...
+    def finalize_image(self) -> None:
+        """
+        Apply the final center-pulse phase correction
+        """
+    def image_to_numpy(self) -> numpy.typing.NDArray[numpy.complex64]:
+        """
+        Copy the device image to a (x_size, y_size) complex64 numpy array
+        """
+    def process_pulse(
+        self,
+        pulse_idx: typing.SupportsInt | typing.SupportsIndex,
+        pulse_data: typing.Annotated[numpy.typing.ArrayLike, numpy.float32],
+    ) -> None:
+        """
+        FFT and accumulate one pulse; pulse_data must be (range_bin_len, 2) float32 little-endian
+        """
 
 class CoordinateGridManager:
     def __init__(

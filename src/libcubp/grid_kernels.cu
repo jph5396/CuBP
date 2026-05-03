@@ -76,6 +76,57 @@ void setCoordinateReferences(
 };
 
 
-__global__ void genECEFCoordGrid(double* grid, int xSize, int ySize) {};
+// this currently isn't used but I figured it should be implemented anyway.
+__device__ WGS84::GeodeticCoord cu_ecefToGeodetic(double x, double y, double z) {
+    double x_y_euclid = sqrt(x * x + y * y);
 
-void launchGenECEFCoordGrid(double* grid, int xSize, int ySize) {};
+    double p = (x * x + y * y) / cu_A2;
+    double q = ((1.0 - cu_E2) / cu_A2) * (z * z);
+    double r = (p + q - cu_E4) / 6.0;
+    double s = cu_E4 * ((p * q) / (4.0 * r * r * r));
+    double t = cbrt(1.0 + s + sqrt(s * (2.0 + s)));
+    double u = r * (1.0 + t + 1.0 / t);
+    double v = sqrt(u * u + cu_E4 * q);
+    double w = cu_E2 * ((u + v - q) / (2.0 * v));
+    double k = sqrt(u + v + w * w) - w;
+    double D = (k * x_y_euclid) / (k + cu_E2);
+
+    double lon = 2.0 * atan2(y, x + x_y_euclid);
+    double lat = 2.0 * atan2(z, D + sqrt(D * D + z * z));
+    double height = ((k + cu_E2 - 1.0) / k) * sqrt(D * D + z * z);
+
+    return WGS84::GeodeticCoord{ lat, lon, height };
+}
+
+__device__ WGS84::ECEFCoord cu_enuToEcef(double e, double n, double u) {
+    return WGS84::ECEFCoord{
+        x_ref + (-slo * e - sla_clo * n + cla_clo * u),
+        y_ref + ( clo * e - sla_slo * n + cla_slo * u),
+        z_ref + (           cla    * n  + sla     * u)
+    };
+}
+
+__global__ void genECEFCoordGrid(double* grid, int xSize, int ySize) {
+    int k = blockIdx.x * blockDim.x + threadIdx.x;
+    if (k >= xSize * ySize) return;
+
+    int col = k % xSize;
+    int row = k / xSize;
+
+    double e = e_ref + (col - (xSize - 1) * 0.5) * d_e;
+    double n = n_ref + (row - (ySize - 1) * 0.5) * d_n;
+
+    WGS84::ECEFCoord ecef = cu_enuToEcef(e, n, 0.0);
+
+    grid[k * 3 + 0] = ecef.x;
+    grid[k * 3 + 1] = ecef.y;
+    grid[k * 3 + 2] = ecef.z;
+}
+
+void launchGenECEFCoordGrid(double* grid, int xSize, int ySize) {
+    int total = xSize * ySize;
+    int blockSize = 256;
+    int gridSize = (total + blockSize - 1) / blockSize;
+    genECEFCoordGrid<<<gridSize, blockSize>>>(grid, xSize, ySize);
+    cudaDeviceSynchronize();
+}

@@ -22,6 +22,6 @@ target_include_directories(_libcubp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/libcubp
 )
 
-target_link_libraries(_libcubp PRIVATE CUDA::cudart)
+target_link_libraries(_libcubp PRIVATE CUDA::cudart CUDA::cufft)
 
 install(TARGETS _libcubp DESTINATION ${SKBUILD_PROJECT_NAME})

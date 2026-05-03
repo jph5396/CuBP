@@ -26,10 +26,10 @@ class BaseBackend:
 
         # use all pulses for the image if pulse_limit is set to -1
         if pulse_limit == -1:
-            self.pulse_limit = self.reader.data_size[0]
+            self.pulse_limit: int = self.reader.data_size[0]
 
         else:
-            self.pulse_limit = pulse_limit
+            self.pulse_limit: int = pulse_limit
 
         self._set_supporting_params()
 

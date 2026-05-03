@@ -4,10 +4,7 @@
 
 ENUMatrixTerms CoordinateGridManager::computeEnuTerms(WGS84::ECEFCoord coords) {
     WGS84::GeodeticCoord converted = WGS84::ecefToGeodetic(coords);
-    return ENUMatrixTerms(
-        converted.lat * deg_to_rad_multipler,
-        converted.lon * deg_to_rad_multipler
-    );
+    return ENUMatrixTerms(converted.lat, converted.lon);
 }
 
 /*

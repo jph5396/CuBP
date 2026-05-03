@@ -1,8 +1,10 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
+#include <pybind11/complex.h>
 #include <iostream>
 #include "grid_manager.h"
+#include "bp_manager.h"
 
 namespace py = pybind11;
 
@@ -95,5 +97,62 @@ PYBIND11_MODULE(_libcubp, m) {
                 return result;
             },
             "Copy the device grid to a (x_size*y_size, 3) numpy array (primarily for testing)"
+        );
+
+    using complex64 = std::complex<float>;
+    using srcpos_array = py::array_t<double, py::array::c_style | py::array::forcecast>;
+    using memmap_array = py::array_t<float, py::array::c_style | py::array::forcecast>;
+
+    py::class_<BPManager>(m, "BPManager")
+        .def(
+            py::init([](
+                int xSize, int ySize,
+                int pulseLimit, int rangeBinLen,
+                double bandwidth, double fc,
+                WGS84::ECEFCoord srpEcef,
+                CoordinateGridManager& gridMgr,
+                srcpos_array srcPos
+            ) {
+                auto srcPosBuf = srcPos.request();
+                return new BPManager(
+                    xSize, ySize, pulseLimit, rangeBinLen,
+                    bandwidth, fc, srpEcef,
+                    gridMgr,
+                    static_cast<const double*>(srcPosBuf.ptr)
+                );
+            }),
+            py::arg("x_size"), py::arg("y_size"),
+            py::arg("pulse_limit"), py::arg("range_bin_len"),
+            py::arg("bandwidth"), py::arg("fc"),
+            py::arg("srp_ecef"),
+            py::arg("grid_manager"),
+            py::arg("src_pos"),
+            
+            // Keep grid_manager alive for the lifetime of BPManager
+            py::keep_alive<0, 8>()
+        )
+        .def(
+            "process_pulse",
+            [](BPManager& self, int pulseIdx, memmap_array pulseData) {
+                auto buf = pulseData.request();
+                self.processPulse(pulseIdx, static_cast<const float*>(buf.ptr));
+            },
+            py::arg("pulse_idx"), py::arg("pulse_data"),
+            "FFT and accumulate one pulse"
+        )
+        .def(
+            "finalize_image",
+            &BPManager::finalizeImage,
+            "Apply the final center-pulse phase correction"
+        )
+        .def(
+            "image_to_numpy",
+            [](BPManager& self) {
+                auto host = self.imageToHost();
+                auto result = py::array_t<complex64>({self.xSize(), self.ySize()});
+                std::copy(host.begin(), host.end(), result.mutable_data());
+                return result;
+            },
+            "Copy the device image to a (x_size, y_size) complex64 numpy array"
         );
 }
