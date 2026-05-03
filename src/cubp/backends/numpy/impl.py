@@ -53,9 +53,9 @@ class NumpyBackend(BaseBackend):
     def form_image(self) -> np.ndarray:
         res_img = np.zeros((self.image_bounds.x * self.image_bounds.y), dtype=np.complex64)
 
-        range_bin_len = self.reader.data_size[1]
+        range_bin_len = self.reader.data_size[1]  # pyright: ignore
         range_res = c / (2 * self._bandwidth)
-        range_axis = np.linspace(-range_bin_len / 2, range_bin_len / 2, range_bin_len) * range_res
+        range_axis = np.linspace(-range_bin_len / 2, range_bin_len / 2, range_bin_len) * range_res  # pyright: ignore
         k_c = 4 * np.pi * self._fc / c
 
         for pulse_num in range(1, self.pulse_limit):
@@ -66,8 +66,8 @@ class NumpyBackend(BaseBackend):
             r_pixels = np.linalg.norm(self.ecef_grid - self._src_pos[pulse_num], axis=1)
             dr = r_center - r_pixels
 
-            real_value = np.interp(dr, range_axis, pulse_t.real)
-            imag_value = np.interp(dr, range_axis, pulse_t.imag)
+            real_value = np.interp(dr, range_axis, pulse_t.real)  # pyright: ignore
+            imag_value = np.interp(dr, range_axis, pulse_t.imag)  # pyright: ignore
 
             signal: np.ndarray = real_value + 1j * imag_value
             phase_correction_term: np.ndarray = np.exp(-1j * k_c * dr)

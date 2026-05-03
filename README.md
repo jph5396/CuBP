@@ -76,3 +76,16 @@ sample-data directory. Below is an example of the produced image:
 ![jeddah-example](sample-data/jeddah-tower.png)
 
 This sample took about ~100 seconds to generate using the cuda backend backend and all available pulses. 
+
+## Project Layout
+To make it easy to integrate multiple backends for the backprojection algorithm, This project provides a base class that 
+can be extended with new implementations. The merimaid diagram below shows the basic flow as of May 2026. 
+```mermaid
+flowchart LR
+A[CuBP] --> B[Benchmark Loop]
+B --> C[Backend Registry]
+C --> D[Numpy Backend]
+C --> E[Pybind]
+E --> F[libcubp Cuda ]
+
+```
